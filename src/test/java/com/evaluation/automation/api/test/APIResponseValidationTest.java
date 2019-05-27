@@ -28,18 +28,21 @@ public class APIResponseValidationTest {
 
     @Test(description = "Validates the api response verify status of response and availability of content")
     public void endpointResponseValidation() {
-        Assert.assertEquals(response.getStatusCode(), (HttpStatus.OK));
-        Assert.assertNotNull(response.getBody());
+        Assert.assertEquals(response.getStatusCode(), (HttpStatus.OK), "Error occurred while the response");
+        Assert.assertNotNull(response.getBody(), "Response body is NULL");
     }
 
-    @Test(dependsOnMethods = {"endpointResponseValidation"}, description = "Validate whether Response element Name")
+    @Test(dependsOnMethods = {"endpointResponseValidation"},
+            description = "Validate whether Response element Name is correct")
     public void responseNameValidation() {
-        Assert.assertEquals(response.getBody().getName(), ValidateConstants.RESPONSE_VALIDATE_NAME_VALUE);
+        Assert.assertEquals(response.getBody().getName(), ValidateConstants.RESPONSE_VALIDATE_NAME_VALUE,
+                "Element Name is Differed from actual output");
     }
 
     @Test(dependsOnMethods = {"endpointResponseValidation"}, description = "Validate CanRelist response value")
     public void responseCanRelistStateValidation() {
-        Assert.assertEquals(response.getBody().isCanRelist(), ValidateConstants.RESPONSE_VALIDATE_CANRELIST_VALUE);
+        Assert.assertEquals(response.getBody().isCanRelist(), ValidateConstants.RESPONSE_VALIDATE_CANRELIST_VALUE,
+                "Element isCanRelist is Differed from actual output");
     }
 
     @Test(dependsOnMethods = {"endpointResponseValidation"}, description = "Validate promotion response value")
@@ -52,13 +55,12 @@ public class APIResponseValidationTest {
         if (promotionElement.isPresent()) {
             Assert.assertTrue(promotionElement.get().getDescription()
                             .contains(ValidateConstants.RESPONSE_VALIDATE_PROMOTIONS_DESCRIPTION_CONTENT),
-                    "Gallery does not contain"
+                    "Element Name is Differed from actual output Gallery does not contain"
                             + ValidateConstants.RESPONSE_VALIDATE_PROMOTIONS_DESCRIPTION_CONTENT);
         } else {
             //If element is not available test will be failed with the message sending element was not sent
             Assert.fail("Promotion not present to evaluate");
         }
-
     }
 
 }
