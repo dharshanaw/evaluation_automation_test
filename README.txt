@@ -20,21 +20,20 @@ Installation and Running
 git clone https://github.com/dharshanaw/
 
 2. Go to project directory evaluation_automation_test
-   cd <git_Checkout_Directory>/evaluation_automation_test
+  cd <git_Checkout_Directory>/evaluation_automation_test
 
 3. Run execute test suite using maven
-   <project_home>$ mvn clean install
+  <project_home>$ mvn clean install
 
 4. If you are running the test directly by the IDE please set following system variable
 for API URL
-   apiBackendUrl = https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false
+  apiBackendUrl = https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false
 
-Please Note: If you are running maven clean local repository it will take some time to get all maen plugins required. (Only for the first time)
+Please Note: If you are running maven clean local repository it will take some time to get all maven plugins required. (Only for the first time)
 
 
 Evaluation of test results
 ===================
-This test module is configured with the Maven Surefire plugin therefire you can find
+This test module is configured with the Maven Surefire plugin therefore you can find
 all the reports under <Build_Home>/target/surefire-reports/ directory.
-
 
